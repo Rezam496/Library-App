@@ -3,10 +3,13 @@ import { GiHeartWings  } from "react-icons/gi";
 
 import styles from './BookCard.module.css';
 
-function BookCard({data:{title,author,image,language,pages}}) {
-    const [like , setLike]=useState(false)
+function BookCard({data,handelLikedList}) {
+    const {title,author,image,language,pages}=data;
+    const [like , setLike]=useState(false);
+
     const likeHandler=()=>{
-        setLike((like)=>!like)
+        handelLikedList(data,like);
+        setLike((like)=>!like);
     }
   return (
     <div className={styles.card}>
